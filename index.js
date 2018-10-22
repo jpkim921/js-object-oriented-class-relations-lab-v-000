@@ -11,28 +11,27 @@ class Driver {
     store.drivers.push(this)
   }
 
+
   trips() {
     return store.trips.filter(trip => {
       return trip.driverId === this.id;
     });
   }
 
-  passengers() {
-    return this.trips().map(trip => {
-      return trip.passenger();
-    });
-  }
-
-
+  //the above method is the same as below, except it uses the arrow function
   // trips() {
   //   return store.trips.filter(
-  //     function() {
+  //     function(trip) {
   //       return trip.driverId === this.id
   //     }.bind(this)
   //   )
   // }
 
-
+  passengers() {
+    return this.trips().map(trip => {
+      return trip.passenger();
+    });
+  }
 }
 
 let passengerId = 0
